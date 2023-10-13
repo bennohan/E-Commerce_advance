@@ -12,11 +12,11 @@
             android:id="@+id/iv_imageLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:contentDescription="@string/image_welcome"
             android:src="@drawable/image_login_register"
             app:layout_constraintBottom_toTopOf="@+id/linearLayout"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:contentDescription="@string/image_welcome" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <LinearLayout
             android:id="@+id/linearLayout"
@@ -63,8 +63,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:autofillHints="phone"
-                    android:backgroundTint="@color/background_textInput"
                     android:background="@drawable/background_button"
+                    android:backgroundTint="@color/background_textInput"
                     android:inputType="phone"
                     android:textColor="@color/black"
                     android:textStyle="bold" />
@@ -96,13 +96,13 @@
                 app:layout_constraintTop_toBottomOf="@+id/tv_email_or_phone">
 
                 <EditText
-                    android:id="@+id/etPhone"
+                    android:id="@+id/etPhoneEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:autofillHints="phone"
-                    android:backgroundTint="@color/background_textInput"
                     android:background="@drawable/background_button"
+                    android:backgroundTint="@color/background_textInput"
                     android:inputType="text"
                     android:textColor="@color/black"
                     android:textStyle="bold" />
@@ -138,8 +138,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:autofillHints="password"
-                    android:backgroundTint="@color/background_textInput"
                     android:background="@drawable/background_button"
+                    android:backgroundTint="@color/background_textInput"
                     android:inputType="textPassword"
                     android:textColor="@color/black"
                     android:textStyle="bold" />
@@ -175,25 +175,43 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:autofillHints="password"
-                    android:backgroundTint="@color/background_textInput"
                     android:background="@drawable/background_button"
+                    android:backgroundTint="@color/background_textInput"
                     android:inputType="textPassword"
                     android:textColor="@color/black"
                     android:textStyle="bold" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <TextView
+                android:id="@+id/tvPasswordNotMatch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="Password Did Not Match"
+                android:textColor="@color/text_red"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tvPasswordLength"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="Password Minimum 6 Character"
+                android:textColor="@color/text_red"
+                android:visibility="gone" />
+
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnStart"
+                android:id="@+id/btnRegister"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                android:backgroundTint="@color/buttonColorYellow"
                 android:background="@drawable/background_button"
+                android:backgroundTint="@color/buttonColorYellow"
                 android:text="Register"
                 android:textAllCaps="false"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/textView"
                 app:layout_constraintEnd_toEndOf="parent"

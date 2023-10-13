@@ -35,10 +35,9 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layou
         val emailPhone = binding.etEmailPhone.textOf()
         val password = binding.etPassword.textOf()
 
-        if (binding.etEmailPhone.isEmptyRequired(R.string.mustFillPhone)|| binding.etPassword.isEmptyRequired(R.string.mustFillPassword)){
+        if (binding.etEmailPhone.isEmptyRequired(R.string.mustFillPhoneEmail)|| binding.etPassword.isEmptyRequired(R.string.mustFillPassword)){
             return
         }
-
         binding.btnLogin.setOnClickListener {
             viewModel.login(emailPhone, password)
         }

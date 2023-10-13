@@ -27,7 +27,7 @@ class RegisterViewModel @Inject constructor(
         password: String,
         confirmPassword: String
     ) = viewModelScope.launch {
-//        _apiResponse.emit(ApiResponse.responseLoading())
+        _apiResponse.emit(ApiResponse().responseLoading())
         ApiObserver({ apiService.register(name,phoneOrEmail, password,confirmPassword) },
             false,
             object : ApiObserver.ResponseListener {
