@@ -2,6 +2,7 @@ package com.bennohan.e_commerce.injection
 
 import android.content.Context
 import com.bennohan.e_commerce.api.ApiService
+import com.bennohan.e_commerce.database.AppDatabase
 import com.crocodic.core.BuildConfig
 import com.crocodic.core.data.CoreSession
 import com.crocodic.core.helper.okhttp.SSLTrust
@@ -25,18 +26,18 @@ import javax.net.ssl.SSLContext
 @Module
 class DataModule {
 
-//    @Singleton
-//    @Provides
-//    fun provideUserDao(appDatabase: AppDatabase) = appDatabase.userDao()
+    @Singleton
+    @Provides
+    fun provideUserDao(appDatabase: AppDatabase) = appDatabase.userDao()
 
-//    @Singleton
-//    @Provides
-//    fun provideAppDatabase(@ApplicationContext context: Context) = AppDatabase.getDatabase(context)
+    @Singleton
+    @Provides
+    fun provideAppDatabase(@ApplicationContext context: Context) = AppDatabase.getDatabase(context)
 
 
-//    @Singleton
-//    @Provides
-//    fun provideGson() = GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_DASHES).create()
+    @Singleton
+    @Provides
+    fun provideGson() = GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_DASHES).create()
 
 //    @Provides
 //    fun provideBaseObserver(apiService: ApiService,session: CoreSession): BaseObserver = BaseObserver(apiService,session)
@@ -86,7 +87,7 @@ class DataModule {
     @Provides
     fun provideApiService(okHttpClient: OkHttpClient): ApiService {
         return Retrofit.Builder()
-            .baseUrl("http://magang.crocodic.net/ki/Arya/Project-Catalog/public/api/")
+            .baseUrl("https://magang.crocodic.net/ki/Rainer/KI_Advance_E-Commerce/public/")
             .addConverterFactory(ScalarsConverterFactory.create())
             .client(okHttpClient)
             .build().create(ApiService::class.java)

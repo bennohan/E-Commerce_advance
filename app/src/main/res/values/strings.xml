@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">E-Commerce</string>
     <string name="image_welcome">Image_welcome</string>
+    <string name="mustFillPhone">Nomor telphone wajib Diisi</string>
+    <string name="mustFillPassword">Password wajib Diisi</string>
+    <string name="mustFillConfirmPassword">Confirm Password wajib Diisi</string>
+    <string name="mustFillName">Nama wajib Diisi</string>
 </resources>
