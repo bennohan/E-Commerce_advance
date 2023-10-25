@@ -3,7 +3,7 @@ package com.bennohan.e_commerce.ui.login
 import androidx.lifecycle.viewModelScope
 import com.bennohan.e_commerce.api.ApiService
 import com.bennohan.e_commerce.base.BaseViewModel
-import com.bennohan.e_commerce.database.User
+import com.bennohan.e_commerce.database.user.User
 import com.bennohan.e_commerce.database.UserDao
 import com.bennohan.e_commerce.database.constant.Const
 import com.crocodic.core.api.ApiCode
@@ -35,7 +35,7 @@ class LoginViewModel @Inject constructor(
             object : ApiObserver.ResponseListener {
                 override suspend fun onSuccess(response: JSONObject) {
                     val data = response.getJSONObject(ApiCode.DATA).toObject<User>(gson)
-                    val token = response.getJSONObject("token").getString("access_token")
+                    val token = response.getJSONObject(ApiCode.DATA).getJSONObject("token").getString("access_token")
                     userDao.insert(data.copy(idRoom = 1))
                     session.setValue(Const.TOKEN.ACCESS_TOKEN,token)
                     _apiResponse.emit(ApiResponse().responseSuccess())

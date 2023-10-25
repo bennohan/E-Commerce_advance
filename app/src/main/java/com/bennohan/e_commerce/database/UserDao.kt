@@ -2,6 +2,7 @@ package com.bennohan.e_commerce.database
 
 import androidx.room.Dao
 import androidx.room.Query
+import com.bennohan.e_commerce.database.user.User
 import com.crocodic.core.data.CoreDao
 import kotlinx.coroutines.flow.Flow
 

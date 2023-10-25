@@ -2,6 +2,7 @@ package com.bennohan.e_commerce.ui.register
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -21,7 +22,6 @@ class RegisterActivity :
     BaseActivity<ActivityRegisterBinding, RegisterViewModel>(R.layout.activity_register) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_register)
 
         validateRegister()
         observe()
@@ -41,7 +41,7 @@ class RegisterActivity :
             validatePassword()
             if (binding.etPassword.textOf().isEmpty()) {
                 binding.etPassword.error = "Password Tidak Boleh Kosong"
-//                binding.tvPasswordNotMatch.visibility = View.GONE
+                binding.tvPasswordNotMatch.visibility = View.GONE
             }
         }
     }
@@ -53,17 +53,17 @@ class RegisterActivity :
     private fun validatePassword() {
         if (!isValidPasswordLength(binding.etPassword.textOf())) {
             //If Password length is not 6 character
-//            binding.tvPasswordLength.visibility = View.VISIBLE
+            binding.tvPasswordLength.visibility = View.VISIBLE
             return
         } else {
-//            binding.tvPasswordLength.visibility = View.GONE
+            binding.tvPasswordLength.visibility = View.GONE
         }
         if (binding.etPassword.textOf() != binding.etConfirmPassword.textOf()) {
             //If Password  is not match
-//            binding.tvPasswordNotMatch.visibility = View.VISIBLE
+            binding.tvPasswordNotMatch.visibility = View.VISIBLE
             return
         } else {
-//            binding.tvPasswordNotMatch.visibility = View.GONE
+            binding.tvPasswordNotMatch.visibility = View.GONE
         }
     }
 
@@ -98,18 +98,19 @@ class RegisterActivity :
         }
         if (binding.etPassword.textOf() == binding.etConfirmPassword.textOf()) {
             // If Password is valid
-//            binding.tvPasswordNotMatch.visibility = View.GONE
-//            binding.tvPasswordNotMatch.visibility = View.GONE
+            binding.tvPasswordNotMatch.visibility = View.GONE
+            binding.tvPasswordNotMatch.visibility = View.GONE
             tos("condition 2")
         } else {
             // If Password Doesn't Valid
-//            binding.tvPasswordLength.visibility = View.GONE
-//            binding.tvPasswordNotMatch.visibility = View.VISIBLE
+            binding.tvPasswordLength.visibility = View.GONE
+            binding.tvPasswordNotMatch.visibility = View.VISIBLE
             tos("condition 3")
             return
         }
 
-        viewModel.register(name, emailPhone, password, confirmPassword)
+//        viewModel.register(name, emailPhone, password, confirmPassword)
+        tos("$name,$emailPhone,$password,$confirmPassword")
     }
 
     private fun observe() {

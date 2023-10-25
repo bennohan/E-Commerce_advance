@@ -1,4 +1,4 @@
-package com.bennohan.e_commerce.database
+package com.bennohan.e_commerce.database.user
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

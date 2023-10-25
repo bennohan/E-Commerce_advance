@@ -71,5 +71,7 @@ dependencies {
     implementation 'androidx.room:room-ktx:2.5.2'
     kapt 'androidx.room:room-compiler:2.5.2'
 
+    //imageSlider
+    implementation 'com.github.denzcoskun:ImageSlideshow:0.1.2'
 
 }

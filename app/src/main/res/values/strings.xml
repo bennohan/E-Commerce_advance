@@ -5,4 +5,5 @@
     <string name="mustFillPassword">Password wajib Diisi</string>
     <string name="mustFillConfirmPassword">Confirm Password wajib Diisi</string>
     <string name="mustFillName">Nama wajib Diisi</string>
+    <string name="logout_message">Are you sure you want to log out ?</string>
 </resources>

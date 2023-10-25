@@ -22,11 +22,15 @@ import kotlinx.coroutines.launch
 class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layout.activity_login) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
 
 
-        login()
         observe()
+
+        binding.btnLogin.setOnClickListener {
+            tos("clicked")
+            login()
+
+        }
 
 
     }
@@ -35,12 +39,14 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layou
         val emailPhone = binding.etEmailPhone.textOf()
         val password = binding.etPassword.textOf()
 
-        if (binding.etEmailPhone.isEmptyRequired(R.string.mustFillPhoneEmail)|| binding.etPassword.isEmptyRequired(R.string.mustFillPassword)){
+        if (binding.etEmailPhone.isEmptyRequired(R.string.mustFillPhoneEmail) || binding.etPassword.isEmptyRequired(
+                R.string.mustFillPassword
+            )
+        ) {
             return
         }
-        binding.btnLogin.setOnClickListener {
-            viewModel.login(emailPhone, password)
-        }
+
+        viewModel.login(emailPhone, password)
 
     }
 
