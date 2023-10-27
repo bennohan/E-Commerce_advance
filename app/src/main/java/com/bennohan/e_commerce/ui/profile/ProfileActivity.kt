@@ -17,13 +17,16 @@ import com.bennohan.e_commerce.ui.login.LoginActivity
 import com.crocodic.core.api.ApiStatus
 import com.crocodic.core.extension.openActivity
 import com.crocodic.core.extension.snacked
+import dagger.Provides
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class ProfileActivity : BaseActivity<ActivityProfileBinding,ProfileViewModel>(R.layout.activity_profile) {
 
+    @Inject
     lateinit var userDao : UserDao
 
     override fun onCreate(savedInstanceState: Bundle?) {

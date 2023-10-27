@@ -1,16 +1,13 @@
 package com.bennohan.e_commerce.ui.detail_product
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.bennohan.e_commerce.R
 import com.bennohan.e_commerce.base.BaseActivity
-import com.bennohan.e_commerce.database.cart.Cart
 import com.bennohan.e_commerce.database.constant.Const
 import com.bennohan.e_commerce.database.product.PhotoCarousel
-import com.bennohan.e_commerce.database.product.Product
 import com.bennohan.e_commerce.databinding.ActivityDetailProductBinding
 import com.crocodic.core.api.ApiStatus
 import com.denzcoskun.imageslider.ImageSlider
@@ -23,8 +20,7 @@ import kotlinx.coroutines.launch
 class DetailProductActivity :
     BaseActivity<ActivityDetailProductBinding, DetailProductViewModel>(R.layout.activity_detail_product) {
 
-//    private var listDataImage = ArrayList<PhotoCarousel?>()
-    val imageList = ArrayList<SlideModel>()
+    private var listDataImage = ArrayList<PhotoCarousel?>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,11 +36,13 @@ class DetailProductActivity :
     }
 
     private fun imageSlider() {
- // Create image list
+        val imageList = ArrayList<SlideModel>()
+        for (item in listDataImage){
+            imageList.add(SlideModel(item?.photo))
+        }
 
-        imageList.add(SlideModel())
 
-        val imageSlider = findViewById<ImageSlider>(R.id.iv_product)
+        val imageSlider = findViewById<ImageSlider>(R.id.image_slider)
         imageSlider.setImageList(imageList)
     }
 
@@ -73,8 +71,8 @@ class DetailProductActivity :
                 }
                 launch {
                     viewModel.listPhotoProduct.collectLatest {
-                        imageList.clear()
-                        imageList.addAll()
+                        listDataImage.clear()
+                        listDataImage.addAll(it)
                     }
                 }
             }

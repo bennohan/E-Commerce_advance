@@ -1,6 +1,5 @@
 package com.bennohan.e_commerce.ui.home
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.core.widget.doOnTextChanged
@@ -68,6 +67,8 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>(R.layout.a
         imageSlider()
         buttonFilterCategory()
 
+        binding.rvProduct.adapter = adapterProduct
+
 
         binding.ivProfile.setOnClickListener {
             openActivity<ProfileActivity>()
@@ -126,7 +127,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>(R.layout.a
     }
 
     private fun search() {
-        binding.searchView.doOnTextChanged { text, start, before, count ->
+        binding.searchView.doOnTextChanged { text, _, _, _ ->
             if (text!!.isNotEmpty()) {
                 val filter = dataProduct.filter {
                     it?.name?.contains(
