@@ -29,10 +29,11 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
+                android:id="@+id/imageView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
                 android:src="@drawable/splash_condition_image"
-                app:layout_constraintBottom_toTopOf="@+id/btnStart"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView2" />
@@ -41,27 +42,15 @@
                 android:id="@+id/btnStart"
                 android:layout_width="260dp"
                 android:layout_height="wrap_content"
+                android:background="@drawable/background_button"
                 android:backgroundTint="@color/buttonColorYellow"
                 android:text="Let's get Started"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/background_button"
                 android:textColor="@color/white"
-                app:layout_constraintBottom_toTopOf="@+id/textView"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Already have an account ? Log In"
-                android:textColor="@color/white"
-                android:textSize="15dp"
-                android:layout_marginBottom="100dp"
-                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

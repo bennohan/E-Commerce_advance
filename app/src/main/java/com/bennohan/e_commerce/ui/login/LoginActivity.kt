@@ -2,6 +2,11 @@ package com.bennohan.e_commerce.ui.login
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.SpannableString
+import android.text.Spanned
+import android.text.method.LinkMovementMethod
+import android.text.style.ClickableSpan
+import android.view.View
 import android.widget.EditText
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -10,6 +15,7 @@ import com.bennohan.e_commerce.R
 import com.bennohan.e_commerce.base.BaseActivity
 import com.bennohan.e_commerce.databinding.ActivityLoginBinding
 import com.bennohan.e_commerce.ui.home.HomeActivity
+import com.bennohan.e_commerce.ui.register.RegisterActivity
 import com.crocodic.core.api.ApiStatus
 import com.crocodic.core.extension.isEmptyRequired
 import com.crocodic.core.extension.openActivity
@@ -24,6 +30,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layou
         super.onCreate(savedInstanceState)
 
         observe()
+        tvRegister()
 
         binding.btnLogin.setOnClickListener {
             login()
@@ -45,6 +52,25 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layou
         }
 
         viewModel.login(emailPhone, password)
+
+    }
+
+    private fun tvRegister() {
+        val spannableString = SpannableString("Already have an account? Log In")
+        val clickableSpan = object : ClickableSpan() {
+            override fun onClick(view: View) {
+                openActivity<RegisterActivity>()
+            }
+        }
+        spannableString.setSpan(
+            clickableSpan,
+            25,
+            spannableString.length,
+            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+        binding.tvRegisterOption.text = spannableString
+        binding.tvRegisterOption.movementMethod =
+            LinkMovementMethod.getInstance() // Required for clickable spans to work
 
     }
 

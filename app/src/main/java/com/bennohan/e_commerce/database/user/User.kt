@@ -13,10 +13,10 @@ data class User(
     val idRoom: Int,
     @Expose
     @SerializedName("created_at")
-    val createdAt: String,
+    val createdAt: String?,
     @Expose
     @SerializedName("email")
-    val email: String,
+    val email: String?,
     @Expose
     @SerializedName("email_verified_at")
     val emailVerifiedAt: String?,
@@ -28,11 +28,11 @@ data class User(
     val name: String,
     @Expose
     @SerializedName("phone")
-    val phone: String,
+    val phone: String?,
     @Expose
     @SerializedName("photo")
     val photo: String?,
     @Expose
     @SerializedName("updated_at")
-    val updatedAt: String
+    val updatedAt: String?
 )

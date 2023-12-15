@@ -40,7 +40,7 @@ interface ApiService {
 
 
     //Cart
-    @GET("cart/")
+    @GET("cart")
     suspend fun indexCart(
     ): String
 

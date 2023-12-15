@@ -2,10 +2,6 @@ package com.bennohan.e_commerce.ui.detail_product
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.EditText
-import android.widget.ImageButton
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -16,13 +12,9 @@ import com.bennohan.e_commerce.database.constant.Const
 import com.bennohan.e_commerce.database.product.PhotoCarousel
 import com.bennohan.e_commerce.database.product.Product
 import com.bennohan.e_commerce.databinding.ActivityDetailProductBinding
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
 import com.crocodic.core.api.ApiStatus
-import com.crocodic.core.extension.tos
 import com.denzcoskun.imageslider.ImageSlider
 import com.denzcoskun.imageslider.models.SlideModel
-import com.google.android.material.bottomsheet.BottomSheetDialog
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -31,24 +23,29 @@ import kotlinx.coroutines.launch
 class DetailProductActivity :
     BaseActivity<ActivityDetailProductBinding, DetailProductViewModel>(R.layout.activity_detail_product) {
 
-    //    private var listDataImage = ArrayList<PhotoCarousel?>()
+//    private var listDataImage = ArrayList<PhotoCarousel?>()
     val imageList = ArrayList<SlideModel>()
-    private var dataProduct: Product? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         getProduct()
         observe()
+        imageSlider()
 
         binding.btnAddCart.setOnClickListener {
-            dataProduct?.let { it1 -> addCart(it1) }
+            addCart()
         }
 
-        binding.btnBack.setOnClickListener {
-            finish()
-        }
+    }
 
+    private fun imageSlider() {
+ // Create image list
+
+        imageList.add(SlideModel())
+
+        val imageSlider = findViewById<ImageSlider>(R.id.iv_product)
+        imageSlider.setImageList(imageList)
     }
 
     private fun observe() {
@@ -71,13 +68,13 @@ class DetailProductActivity :
                 }
                 launch {
                     viewModel.product.collectLatest { productData ->
-                        binding.data = productData
-                        dataProduct = productData
+                        binding.data =productData
                     }
                 }
                 launch {
                     viewModel.listPhotoProduct.collectLatest {
                         imageList.clear()
+                        imageList.addAll()
                     }
                 }
             }
@@ -90,42 +87,6 @@ class DetailProductActivity :
 
     }
 
-    private fun addCart(data: Product) {
-        val bottomSheetDialog = BottomSheetDialog(this@DetailProductActivity)
-        val view = layoutInflater.inflate(R.layout.dialog_add_cart, null)
-        val tvProductName = findViewById<TextView>(R.id.tv_productName)
-        val ivProduct = findViewById<ImageView>(R.id.iv_product)
-        val btnMinCart = findViewById<ImageButton>(R.id.btn_minCart)
-        val btnAddCart = findViewById<ImageButton>(R.id.btn_addCart)
-        val etQty = findViewById<EditText>(R.id.et_qty)
-        var currentQuantity = etQty.text.toString().toIntOrNull() ?: 1
-
-        tvProductName.text = data.name
-
-        btnMinCart.setOnClickListener {
-            if (currentQuantity > 0) {
-                currentQuantity--
-                etQty.setText(currentQuantity.toString())
-            }else{
-                tos("Apakah Kamu Yakin Ingin Menghapus Produk")
-            }
-        }
-
-        btnAddCart.setOnClickListener {
-                currentQuantity++
-                etQty.setText(currentQuantity.toString())
-        }
-
-//        Glide
-//            .with(view.context)
-//            .load(data.photoThumbnail)
-//            .apply(RequestOptions.centerCropTransform())
-//            .placeholder(R.drawable.ic_baseline_person_24)
-//            .into(ivProduct)
-
-        bottomSheetDialog.dismiss()
-
-        bottomSheetDialog.setContentView(view)
-        bottomSheetDialog.show()
+    private fun addCart() {
     }
 }
