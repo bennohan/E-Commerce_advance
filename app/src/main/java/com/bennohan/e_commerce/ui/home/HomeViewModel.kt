@@ -30,7 +30,7 @@ class HomeViewModel @Inject constructor(
     var listProduct = _listProduct.asSharedFlow()
 
 
-    fun getProduct(
+    fun getIndexProduct(
     ) = viewModelScope.launch {
         _apiResponse.emit(ApiResponse().responseLoading())
         ApiObserver(

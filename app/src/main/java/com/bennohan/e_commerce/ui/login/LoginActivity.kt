@@ -23,11 +23,9 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layou
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
         observe()
 
         binding.btnLogin.setOnClickListener {
-            tos("clicked")
             login()
 
         }
@@ -58,15 +56,14 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layou
                         when (it.status) {
                             ApiStatus.LOADING -> loadingDialog.show()
                             ApiStatus.SUCCESS -> {
+                                loadingDialog.show("Success \n Login Success")
                                 openActivity<HomeActivity> {
                                     finish()
                                 }
-                                tos("Login Success")
                             }
                             ApiStatus.ERROR -> {
                                 disconnect(it)
                                 loadingDialog.setResponse(it.message ?: return@collect)
-
                             }
                             else -> loadingDialog.setResponse(it.message ?: return@collect)
                         }

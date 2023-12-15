@@ -19,7 +19,7 @@ data class User(
     val email: String,
     @Expose
     @SerializedName("email_verified_at")
-    val emailVerifiedAt: String,
+    val emailVerifiedAt: String?,
     @Expose
     @SerializedName("id")
     val id: String,
@@ -31,7 +31,7 @@ data class User(
     val phone: String,
     @Expose
     @SerializedName("photo")
-    val photo: String,
+    val photo: String?,
     @Expose
     @SerializedName("updated_at")
     val updatedAt: String

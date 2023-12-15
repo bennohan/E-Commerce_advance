@@ -19,7 +19,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".DetailProductActivity"
+            android:name=".ui.detail_product.DetailProductActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

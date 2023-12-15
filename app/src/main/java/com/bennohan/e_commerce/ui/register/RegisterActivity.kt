@@ -121,7 +121,8 @@ class RegisterActivity :
                         when (it.status) {
                             ApiStatus.LOADING -> loadingDialog.show("Register")
                             ApiStatus.SUCCESS -> {
-                                tos("Register Success")
+                                loadingDialog.show("Success \n Register Success")
+//                                tos("Register Success")
                                 finish()
                             }
                             ApiStatus.ERROR -> {

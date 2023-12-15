@@ -68,6 +68,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>(R.layout.a
         imageSlider()
         buttonFilterCategory()
 
+        binding.rvProduct.adapter = adapterProduct
 
         binding.ivProfile.setOnClickListener {
             openActivity<ProfileActivity>()
@@ -179,7 +180,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>(R.layout.a
     }
 
     private fun getProduct() {
-        viewModel.getProduct()
+        viewModel.getIndexProduct()
     }
 
 
