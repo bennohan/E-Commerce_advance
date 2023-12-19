@@ -10,6 +10,7 @@ import com.crocodic.core.api.ApiObserver
 import com.crocodic.core.api.ApiResponse
 import com.crocodic.core.data.CoreSession
 import com.crocodic.core.extension.toList
+import com.crocodic.core.extension.toObject
 import com.google.gson.Gson
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -30,15 +31,15 @@ class CartViewModel @Inject constructor(
     var listCart = _listCart.asSharedFlow()
 
 
-    fun getCart(
+    fun getIndexCart(
     ) = viewModelScope.launch {
         _apiResponse.emit(ApiResponse().responseLoading())
         ApiObserver(
-            { apiService.indexCart() },
+            { apiService.getCart() },
             false,
             object : ApiObserver.ResponseListener {
                 override suspend fun onSuccess(response: JSONObject) {
-                    val data = response.getJSONArray(ApiCode.DATA).toList<Cart>(gson)
+                    val data = response.getJSONObject(ApiCode.DATA).getJSONArray("cart").toList<Cart>(gson)
                     _listCart.emit(data)
                     _apiResponse.emit(ApiResponse().responseSuccess())
                 }

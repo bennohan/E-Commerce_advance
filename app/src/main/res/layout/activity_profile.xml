@@ -42,6 +42,7 @@
                 android:id="@+id/iv_profile"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
+                imageUrl='@{user.photo}'
                 tools:src="@drawable/ic_baseline_person_24" />
 
         </androidx.cardview.widget.CardView>

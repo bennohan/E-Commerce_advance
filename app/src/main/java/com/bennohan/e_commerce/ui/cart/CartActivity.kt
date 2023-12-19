@@ -67,11 +67,15 @@ class CartActivity : BaseActivity<ActivityCartBinding , CartViewModel>(R.layout.
                 launch {
                     viewModel.apiResponse.collect {
                         when (it.status) {
-                            ApiStatus.LOADING -> {}
-                            ApiStatus.SUCCESS -> {}
+                            ApiStatus.LOADING -> {
+                                loadingDialog.show()
+                            }
+                            ApiStatus.SUCCESS -> {
+                                loadingDialog.dismiss()
+                            }
                             ApiStatus.ERROR -> {
 //                                disconnect(it)
-//                                loadingDialog.setResponse(it.message ?: return@collect)
+                                loadingDialog.setResponse(it.message ?: return@collect)
 
                             }
                             else -> {}
@@ -91,6 +95,6 @@ class CartActivity : BaseActivity<ActivityCartBinding , CartViewModel>(R.layout.
     }
 
     private fun getListCart() {
-        viewModel.getCart()
+        viewModel.getIndexCart()
     }
 }

@@ -34,6 +34,7 @@ class RegisterActivity :
         binding.btnRegister.setOnClickListener {
             register()
         }
+        tvLogin()
 
     }
 
@@ -52,7 +53,7 @@ class RegisterActivity :
     }
 
     private fun tvLogin(){
-        val spannableString = SpannableString("Already have an account? Register Now")
+        val spannableString = SpannableString("Already have an account? Login Now")
         val clickableSpan = object : ClickableSpan() {
             override fun onClick(view: View) {
                 openActivity<RegisterActivity>()

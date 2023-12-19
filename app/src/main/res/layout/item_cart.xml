@@ -42,6 +42,9 @@
                     tools:text="CARDIGAN OVERSIZE - FROSTA CARDIGAN"
                     android:textColor="@color/black"
                     android:textSize="20dp"
+                    android:maxLines="2"
+                    android:ellipsize="end"
+                    android:text='@{data.product.name}'
                     android:textStyle="bold"
                     app:layout_constraintStart_toEndOf="@+id/iv_product" />
 
@@ -50,6 +53,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     tools:text="Rp 20.000"
+                    android:text='@{data.product.price}'
                     android:textColor="@color/buttonColorYellow"
                     android:textSize="15sp"
                     android:textStyle="bold"

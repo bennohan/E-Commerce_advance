@@ -56,7 +56,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layou
     }
 
     private fun tvRegister() {
-        val spannableString = SpannableString("Already have an account? Log In")
+        val spannableString = SpannableString("Don’t have an account? Register Now")
         val clickableSpan = object : ClickableSpan() {
             override fun onClick(view: View) {
                 openActivity<RegisterActivity>()
@@ -64,7 +64,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layou
         }
         spannableString.setSpan(
             clickableSpan,
-            25,
+            23,
             spannableString.length,
             Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
         )

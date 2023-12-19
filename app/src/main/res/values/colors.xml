@@ -10,4 +10,5 @@
     <color name="mainColor_purple">#6B5CEF</color>
     <color name="buttonColorYellow">#F1C33A</color>
     <color name="background_textInput">#E1E1E1</color>
+    <color name="background_button_filter">#CFCDCD</color>
 </resources>

@@ -87,9 +87,16 @@ class ProfileActivity : BaseActivity<ActivityProfileBinding,ProfileViewModel>(R.
                         viewModel.apiResponse.collect {
                             when (it.status) {
                                 //TODO Loading dialog at fragment
-                                ApiStatus.LOADING -> {}
-                                ApiStatus.SUCCESS -> {}
-                                ApiStatus.ERROR -> {}
+                                ApiStatus.LOADING -> {
+                                    loadingDialog.show()
+                                }
+                                ApiStatus.SUCCESS -> {
+                                    loadingDialog.dismiss()
+                                }
+                                ApiStatus.ERROR -> {
+                                    disconnect(it)
+                                    loadingDialog.setResponse(it.message ?: return@collect)
+                                }
                                 else -> binding?.root?.snacked("error")
                             }
 

@@ -8,7 +8,7 @@ interface ApiService {
     //AUTH
     //login
     @FormUrlEncoded
-    @POST("auth/login")
+    @POST("api/auth/login")
     suspend fun login(
         @Field("email_or_phone") phoneOrEmail: String?,
         @Field("password") password: String?,
@@ -16,7 +16,7 @@ interface ApiService {
 
     //Register
     @FormUrlEncoded
-    @POST("auth/register")
+    @POST("api/auth/register")
     suspend fun register(
         @Field("name") name: String?,
         @Field("phone_or_email") phoneOrEmail: String?,
@@ -25,30 +25,43 @@ interface ApiService {
     ): String
 
 
-    @POST("auth/logout")
+
+    @POST("api/auth/logout")
     suspend fun logout(
     ): String
 
-    @GET("product")
+    @GET("api/product")
     suspend fun indexProduct(
     ): String
 
-    @GET("product/{id}")
+    @GET("api/product/")
+    suspend fun indexProductCategory(
+    ): String
+
+    @GET("api/product/{id}")
     suspend fun getProductById(
-        @Path("id") productId : Int?
+        @Path("id") productId : String?
     ): String
 
+    @POST("api/catalogue/favorite/{id}")
+    suspend fun favouriteProduct(
+        @Path("id") productId : String?
+    ): String
 
+    @POST("/api/catalogue/unfavorite/{id}")
+    suspend fun unFavouriteProduct(
+        @Path("id") productId : String?
+    ): String
+    
     //Cart
-    @GET("cart")
-    suspend fun indexCart(
-    ): String
-
-
     @FormUrlEncoded
-    @POST("cart/add")
+    @POST("api/cart/add")
     suspend fun addCart(
         @Field("product_id") productId: String?,
         @Field("quantity") quantityProduct: String?,
+    ): String
+
+    @GET("api/cart")
+    suspend fun getCart(
     ): String
 }

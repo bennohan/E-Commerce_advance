@@ -7,7 +7,4 @@ object Const {
     object PRODUCT {
         const val PRODUCT_ID = "id"
     }
-//    object SAVED {
-//        const val SAVE_DESTINATION = "save"
-//    }
 }

@@ -3,6 +3,7 @@ package com.bennohan.e_commerce.injection
 import android.content.Context
 import com.bennohan.e_commerce.api.ApiService
 import com.bennohan.e_commerce.database.AppDatabase
+import com.bennohan.e_commerce.database.constant.Const
 import com.crocodic.core.BuildConfig
 import com.crocodic.core.data.CoreSession
 import com.crocodic.core.helper.okhttp.SSLTrust
@@ -63,9 +64,9 @@ class DataModule {
 
             .addInterceptor { chain ->
                 val original = chain.request()
-//                val token = session.getString(Const.TOKEN.ACCESS_TOKEN)
+                val token = session.getString(Const.TOKEN.ACCESS_TOKEN)
                 val requestBuilder = original.newBuilder()
-//                    .header("Authorization", "Bearer $token")
+                    .header("Authorization", "Bearer $token")
                     .header("Content-Type", "application/json")
                     .method(original.method, original.body)
 //                    .header("Authorization","")
@@ -87,7 +88,7 @@ class DataModule {
     @Provides
     fun provideApiService(okHttpClient: OkHttpClient): ApiService {
         return Retrofit.Builder()
-            .baseUrl("https://magang.crocodic.net/ki/Rainer/KI_Advance_E-Commerce/public/api/")
+            .baseUrl("https://magang.crocodic.net/ki/Rainer/KI_Advance_E-Commerce/public/")
             .addConverterFactory(ScalarsConverterFactory.create())
             .client(okHttpClient)
             .build().create(ApiService::class.java)

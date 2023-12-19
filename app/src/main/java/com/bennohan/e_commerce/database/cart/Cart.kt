@@ -1,6 +1,7 @@
 package com.bennohan.e_commerce.database.cart
 
 
+import com.bennohan.e_commerce.database.product.Product
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
@@ -31,5 +32,9 @@ data class Cart(
     val updatedAt: String?,
     @Expose
     @SerializedName("updated_at_formatted")
-    val updatedAtFormatted: String?
-)
+    val updatedAtFormatted: String?,
+    @Expose
+    @SerializedName("product")
+    val product: Product?,
+
+    )

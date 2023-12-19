@@ -36,7 +36,7 @@ class DetailProductViewModel @Inject constructor(
     private var _listImage = MutableSharedFlow<List<PhotoCarousel?>>()
     var listPhotoProduct = _listImage.asSharedFlow()
 
-    fun getProductById(id: Int) = viewModelScope.launch {
+    fun getProductById(id: String) = viewModelScope.launch {
         ApiObserver({ apiService.getProductById(id) },
             false, object : ApiObserver.ResponseListener {
                 override suspend fun onSuccess(response: JSONObject) {
@@ -64,7 +64,7 @@ class DetailProductViewModel @Inject constructor(
             false,
             object : ApiObserver.ResponseListener {
                 override suspend fun onSuccess(response: JSONObject) {
-                    _apiResponse.emit(ApiResponse().responseSuccess())
+                    _apiResponse.emit(ApiResponse().responseSuccess("Add to Cart Success"))
 
                 }
 
