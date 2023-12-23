@@ -65,6 +65,7 @@
                     android:orientation="horizontal">
 
                     <ImageButton
+                        android:id="@+id/btn_minQty"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/ic_baseline_horizontal_min" />
@@ -73,12 +74,14 @@
                         android:layout_width="40dp"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:text="1"
+                        tools:text="1"
+                        android:text='@{data.quantity.toString()}'
                         android:textColor="@color/black"
                         android:textSize="20dp"
                         android:textStyle="bold" />
 
                     <ImageButton
+                        android:id="@+id/btn_addQty"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/ic_baseline_add_24" />

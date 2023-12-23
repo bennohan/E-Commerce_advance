@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="user"
             type="com.bennohan.e_commerce.database.user.User" />
@@ -14,6 +15,18 @@
         android:layout_height="match_parent"
         android:background="@color/mainColor_purple"
         tools:context=".ui.profile.ProfileActivity">
+
+        <ImageButton
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:background="@drawable/background_button_product"
+            android:backgroundTint="@null"
+            android:padding="5dp"
+            android:src="@drawable/ic_baseline_arrow_back_purple"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/iv_imageLogin"
@@ -31,8 +44,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            app:cardCornerRadius="1000dp"
             android:layout_marginTop="80dp"
+            app:cardCornerRadius="1000dp"
             app:layout_constraintBottom_toTopOf="@+id/linearLayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -40,9 +53,9 @@
 
             <ImageView
                 android:id="@+id/iv_profile"
+                imageUrlCircle='@{user.photo}'
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                imageUrl='@{user.photo}'
                 tools:src="@drawable/ic_baseline_person_24" />
 
         </androidx.cardview.widget.CardView>
@@ -65,11 +78,11 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text='@{user.name}'
-                tools:text="Hirai Momo"
                 android:textColor="@color/black"
                 android:textSize="20dp"
                 android:textStyle="bold"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Hirai Momo" />
 
             <LinearLayout
                 android:id="@+id/view_profileSetting"
@@ -91,6 +104,7 @@
                     android:textStyle="bold" />
 
                 <ImageView
+                    android:id="@+id/btn_profileSetting_froward"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_baseline_arrow_forward_ios_24" />
@@ -204,9 +218,6 @@
             </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

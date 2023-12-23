@@ -14,6 +14,7 @@ import com.bennohan.e_commerce.base.BaseActivity
 import com.bennohan.e_commerce.database.UserDao
 import com.bennohan.e_commerce.databinding.ActivityProfileBinding
 import com.bennohan.e_commerce.ui.login.LoginActivity
+import com.bennohan.e_commerce.ui.profileSettings.ProfileSettingsActivity
 import com.crocodic.core.api.ApiStatus
 import com.crocodic.core.extension.openActivity
 import com.crocodic.core.extension.snacked
@@ -36,6 +37,10 @@ class ProfileActivity : BaseActivity<ActivityProfileBinding,ProfileViewModel>(R.
 
         binding.btnLogout.setOnClickListener {
             logoutDialog()
+        }
+
+        binding.btnProfileSettingFroward.setOnClickListener {
+            openActivity<ProfileSettingsActivity>()
         }
 
     }

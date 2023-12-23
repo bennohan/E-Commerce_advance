@@ -24,6 +24,20 @@ interface ApiService {
         @Field("confirm_password") confirmPassword: String?,
     ): String
 
+    //Update Profile
+    @FormUrlEncoded
+    @POST("api/user/edit-profile")
+    suspend fun updateProfile(
+        @Field("name") name: String?,
+    ): String
+
+    @Multipart
+    @POST("api/user/edit-profile")
+    suspend fun updateProfilePhoto(
+        @Query("name") name: String?,
+        @Part photo: MultipartBody.Part?
+    ): String
+
 
 
     @POST("api/auth/logout")
@@ -61,7 +75,19 @@ interface ApiService {
         @Field("quantity") quantityProduct: String?,
     ): String
 
+    @FormUrlEncoded
+    @POST("api/cart/add{id}")
+    suspend fun editCart(
+        @Path("id") productId : String?,
+        @Field("quantity") quantityProduct: String?,
+    ): String
+
     @GET("api/cart")
     suspend fun getCart(
+    ): String
+
+    //Transaction
+    @POST("api/transaction/cart")
+    suspend fun transactionCart(
     ): String
 }
