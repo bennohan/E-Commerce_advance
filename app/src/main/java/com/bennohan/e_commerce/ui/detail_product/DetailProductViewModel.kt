@@ -3,11 +3,10 @@ package com.bennohan.e_commerce.ui.detail_product
 import androidx.lifecycle.viewModelScope
 import com.bennohan.e_commerce.api.ApiService
 import com.bennohan.e_commerce.base.BaseViewModel
-import com.bennohan.e_commerce.database.UserDao
-import com.bennohan.e_commerce.database.constant.Const
 import com.bennohan.e_commerce.database.product.PhotoCarousel
 import com.bennohan.e_commerce.database.product.Product
-import com.bennohan.e_commerce.database.user.User
+import com.bennohan.e_commerce.database.review.Review
+import com.bennohan.e_commerce.database.user.UserDao
 import com.crocodic.core.api.ApiCode
 import com.crocodic.core.api.ApiObserver
 import com.crocodic.core.api.ApiResponse
@@ -36,12 +35,17 @@ class DetailProductViewModel @Inject constructor(
     private var _listImage = MutableSharedFlow<List<PhotoCarousel?>>()
     var listPhotoProduct = _listImage.asSharedFlow()
 
+    private var _listReview = MutableSharedFlow<List<Review?>>()
+    var listReview = _listReview.asSharedFlow()
+
+
     fun getProductById(id: String) = viewModelScope.launch {
         ApiObserver({ apiService.getProductById(id) },
             false, object : ApiObserver.ResponseListener {
                 override suspend fun onSuccess(response: JSONObject) {
                     val data = response.getJSONObject(ApiCode.DATA).toObject<Product>(gson)
                     val dataImage = response.getJSONObject(ApiCode.DATA).getJSONArray("photo_carousel").toList<PhotoCarousel>(gson)
+//                    val dataReview = response.getJSONObject(ApiCode.DATA).getJSONArray("review").toList<Review>(gson)
                     _listImage.emit(dataImage)
                     _product.emit(data)
                     _apiResponse.emit(ApiResponse().responseSuccess())
@@ -65,6 +69,49 @@ class DetailProductViewModel @Inject constructor(
             object : ApiObserver.ResponseListener {
                 override suspend fun onSuccess(response: JSONObject) {
                     _apiResponse.emit(ApiResponse().responseSuccess("Add to Cart Success"))
+
+                }
+
+                override suspend fun onError(response: ApiResponse) {
+                    super.onError(response)
+                    _apiResponse.emit(ApiResponse().responseError())
+
+                }
+            })
+    }
+
+    fun addProductReview(
+        content: String,
+        star: String,
+        productId: String,
+    ) = viewModelScope.launch {
+        _apiResponse.emit(ApiResponse().responseLoading())
+        ApiObserver({ apiService.addReview(content,star,productId) },
+            false,
+            object : ApiObserver.ResponseListener {
+                override suspend fun onSuccess(response: JSONObject) {
+                    _apiResponse.emit(ApiResponse().responseSuccess("Add Review Success"))
+
+                }
+
+                override suspend fun onError(response: ApiResponse) {
+                    super.onError(response)
+                    _apiResponse.emit(ApiResponse().responseError())
+
+                }
+            })
+    }
+
+    fun getReview(
+    ) = viewModelScope.launch {
+        _apiResponse.emit(ApiResponse().responseLoading())
+        ApiObserver({ apiService.getReview() },
+            false,
+            object : ApiObserver.ResponseListener {
+                override suspend fun onSuccess(response: JSONObject) {
+                    val review = response.getJSONArray(ApiCode.DATA).toList<Review>(gson)
+                    _listReview.emit(review)
+                    _apiResponse.emit(ApiResponse().responseSuccess())
 
                 }
 

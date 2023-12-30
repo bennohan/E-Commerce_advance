@@ -17,10 +17,12 @@
         tools:context=".ui.profileSettings.ProfileSettingsActivity">
 
         <ImageButton
+            android:contentDescription="@string/button_back"
             android:id="@+id/btn_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
+            android:foreground="@drawable/ripple_effect"
             android:background="@drawable/background_button_product"
             android:backgroundTint="@null"
             android:padding="5dp"
@@ -53,6 +55,7 @@
             app:layout_constraintTop_toTopOf="@+id/iv_imageLogin">
 
             <ImageView
+                android:contentDescription="@string/image_profile"
                 android:id="@+id/iv_profile"
                 imageUrlCircle='@{user.photo}'
                 android:layout_width="100dp"
@@ -62,6 +65,7 @@
             <ImageView
                 android:id="@+id/iv_profileNew"
                 android:layout_width="100dp"
+                android:contentDescription="@string/image_profile"
                 android:layout_height="100dp"
                 android:visibility="gone"
                 tools:src="@drawable/ic_baseline_person_24" />
@@ -80,6 +84,7 @@
                 <ImageView
                     android:layout_width="25dp"
                     android:layout_height="20dp"
+                    android:contentDescription="@string/button_add_photo"
                     android:src="@drawable/ic_baseline_add_a_photo_white" />
             </androidx.cardview.widget.CardView>
 
@@ -89,6 +94,8 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:foreground="@drawable/ripple_effect"
+            android:contentDescription="@string/button_add_photo"
             android:src="@drawable/ic_baseline_add_a_photo_24"
             app:layout_constraintBottom_toBottomOf="@+id/card_profile"
             app:layout_constraintEnd_toEndOf="@+id/card_profile" />
@@ -112,7 +119,7 @@
                 android:gravity="center"
                 android:text='@{user.name}'
                 android:textColor="@color/black"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Hirai Momo" />
@@ -122,7 +129,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                android:text="Name"
+                android:text="@string/name"
                 android:textColor="@color/black"
                 android:textSize="17sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -140,6 +147,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/tv_email_or_phone">
 
                 <EditText
+                    android:hint="@string/name"
                     android:id="@+id/et_username"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -162,7 +170,7 @@
                 android:layout_marginBottom="50dp"
                 android:background="@drawable/background_button"
                 android:backgroundTint="@color/buttonColorYellow"
-                android:text="Save"
+                android:text="@string/save"
                 android:textAllCaps="false"
                 android:textColor="@color/black"
                 android:textStyle="bold"

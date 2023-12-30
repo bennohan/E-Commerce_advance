@@ -1,9 +1,8 @@
-package com.bennohan.e_commerce.ui.home
+package com.bennohan.e_commerce.ui.viewAll
 
 import androidx.lifecycle.viewModelScope
 import com.bennohan.e_commerce.api.ApiService
 import com.bennohan.e_commerce.base.BaseViewModel
-import com.bennohan.e_commerce.database.category.CategoryProduct
 import com.bennohan.e_commerce.database.user.UserDao
 import com.bennohan.e_commerce.database.product.Product
 import com.crocodic.core.api.ApiCode
@@ -20,19 +19,15 @@ import org.json.JSONObject
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel @Inject constructor(
+class AllViewModel @Inject constructor(
     private val apiService: ApiService,
     private val session: CoreSession,
     private val gson: Gson,
     private val userDao: UserDao
-) :  BaseViewModel() {
+) : BaseViewModel() {
 
     private var _listProduct = MutableSharedFlow<List<Product?>>()
     var listProduct = _listProduct.asSharedFlow()
-
-    private var _listCategory = MutableSharedFlow<List<CategoryProduct?>>()
-    var listCategory = _listCategory.asSharedFlow()
-
 
     fun getIndexProduct(
     ) = viewModelScope.launch {
@@ -44,27 +39,6 @@ class HomeViewModel @Inject constructor(
                 override suspend fun onSuccess(response: JSONObject) {
                     val data = response.getJSONArray(ApiCode.DATA).toList<Product>(gson)
                     _listProduct.emit(data)
-                    _apiResponse.emit(ApiResponse().responseSuccess())
-                }
-
-                override suspend fun onError(response: ApiResponse) {
-                    //Ask why the response wont show if the super is gone
-                    super.onError(response)
-                    _apiResponse.emit(ApiResponse().responseError())
-                }
-            })
-    }
-
-    fun getIndexCategory(
-    ) = viewModelScope.launch {
-        _apiResponse.emit(ApiResponse().responseLoading())
-        ApiObserver(
-            { apiService.indexProductCategory() },
-            false,
-            object : ApiObserver.ResponseListener {
-                override suspend fun onSuccess(response: JSONObject) {
-                    val data = response.getJSONArray(ApiCode.DATA).toList<CategoryProduct>(gson)
-                    _listCategory.emit(data)
                     _apiResponse.emit(ApiResponse().responseSuccess())
                 }
 

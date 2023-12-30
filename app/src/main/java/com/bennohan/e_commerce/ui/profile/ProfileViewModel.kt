@@ -3,7 +3,7 @@ package com.bennohan.e_commerce.ui.profile
 import androidx.lifecycle.viewModelScope
 import com.bennohan.e_commerce.api.ApiService
 import com.bennohan.e_commerce.base.BaseViewModel
-import com.bennohan.e_commerce.database.UserDao
+import com.bennohan.e_commerce.database.user.UserDao
 import com.crocodic.core.api.ApiObserver
 import com.crocodic.core.api.ApiResponse
 import com.crocodic.core.data.CoreSession

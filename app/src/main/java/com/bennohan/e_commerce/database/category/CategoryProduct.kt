@@ -1,4 +1,4 @@
-package com.bennohan.e_commerce.database
+package com.bennohan.e_commerce.database.category
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName

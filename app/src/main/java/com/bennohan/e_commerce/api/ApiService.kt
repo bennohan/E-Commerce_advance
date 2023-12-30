@@ -38,6 +38,12 @@ interface ApiService {
         @Part photo: MultipartBody.Part?
     ): String
 
+    @FormUrlEncoded
+    @POST("api/user/edit-password")
+    suspend fun editPassword(
+        @Field("new_password") newPassword: String?,
+        @Field("password_confirmation") passwordConfirmation: String?,
+    ): String
 
 
     @POST("api/auth/logout")
@@ -54,19 +60,19 @@ interface ApiService {
 
     @GET("api/product/{id}")
     suspend fun getProductById(
-        @Path("id") productId : String?
+        @Path("id") productId: String?
     ): String
 
     @POST("api/catalogue/favorite/{id}")
     suspend fun favouriteProduct(
-        @Path("id") productId : String?
+        @Path("id") productId: String?
     ): String
 
     @POST("/api/catalogue/unfavorite/{id}")
     suspend fun unFavouriteProduct(
-        @Path("id") productId : String?
+        @Path("id") productId: String?
     ): String
-    
+
     //Cart
     @FormUrlEncoded
     @POST("api/cart/add")
@@ -76,10 +82,17 @@ interface ApiService {
     ): String
 
     @FormUrlEncoded
-    @POST("api/cart/add{id}")
+    @POST("api/cart/edit/{id}")
     suspend fun editCart(
-        @Path("id") productId : String?,
+        @Path("id") idCart: String?,
+        @Field("product_id") productId: String?,
         @Field("quantity") quantityProduct: String?,
+    ): String
+
+    @FormUrlEncoded
+    @POST("api/cart/delete/{id}")
+    suspend fun deleteCart(
+        @Path("id") idCart: String?,
     ): String
 
     @GET("api/cart")
@@ -89,5 +102,24 @@ interface ApiService {
     //Transaction
     @POST("api/transaction/cart")
     suspend fun transactionCart(
+    ): String
+
+    //Review
+    @GET("api/review/")
+    suspend fun getReview(
+    ): String
+
+    @FormUrlEncoded
+    @POST("api/review/create")
+    suspend fun addReview(
+        @Field("star") star: String?,
+        @Field("content") content: String?,
+        @Field("product_id") productId: String?,
+    ): String
+
+
+    //History
+    @GET("api/history/")
+    suspend fun getHistory(
     ): String
 }

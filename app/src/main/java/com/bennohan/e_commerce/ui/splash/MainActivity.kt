@@ -5,7 +5,7 @@ import android.os.Handler
 import android.os.Looper
 import androidx.lifecycle.lifecycleScope
 import com.bennohan.e_commerce.R
-import com.bennohan.e_commerce.database.UserDao
+import com.bennohan.e_commerce.database.user.UserDao
 import com.bennohan.e_commerce.databinding.ActivityMainBinding
 import com.bennohan.e_commerce.ui.home.HomeActivity
 import com.bennohan.e_commerce.ui.login.LoginActivity

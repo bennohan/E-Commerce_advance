@@ -5,6 +5,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import android.content.Context
 import com.bennohan.e_commerce.database.user.User
+import com.bennohan.e_commerce.database.user.UserDao
 
 @Database(entities = [User::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {

@@ -1,13 +1,11 @@
 package com.bennohan.e_commerce.ui.login
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.view.View
-import android.widget.EditText
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -20,7 +18,6 @@ import com.crocodic.core.api.ApiStatus
 import com.crocodic.core.extension.isEmptyRequired
 import com.crocodic.core.extension.openActivity
 import com.crocodic.core.extension.textOf
-import com.crocodic.core.extension.tos
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 

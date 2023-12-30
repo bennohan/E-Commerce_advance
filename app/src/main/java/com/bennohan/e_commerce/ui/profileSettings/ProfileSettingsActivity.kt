@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.DialogInterface
 import android.graphics.BitmapFactory
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -17,11 +16,10 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.bennohan.e_commerce.R
 import com.bennohan.e_commerce.base.BaseActivity
-import com.bennohan.e_commerce.database.UserDao
 import com.bennohan.e_commerce.database.user.User
+import com.bennohan.e_commerce.database.user.UserDao
 import com.bennohan.e_commerce.databinding.ActivityProfileSettingsBinding
 import com.bennohan.e_commerce.helper.ViewBindingHelper.Companion.writeBitmap
-import com.bennohan.e_commerce.ui.profile.ProfileActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.crocodic.core.api.ApiStatus
@@ -71,7 +69,6 @@ class ProfileSettingsActivity :
         val nameInput = binding.etUsername.textOf()
         binding.btnSave.setOnClickListener {
             if (filePhoto == null) {
-//                tos(nameInput)
                 nameInput.let { it1 -> viewModel.updateProfile(it1) }
                 Log.d("conditon 1", "condition 1")
             } else {
@@ -103,7 +100,6 @@ class ProfileSettingsActivity :
                                         loadingDialog.dismiss()
                                         tos("Profile Edited")
                                         finish()
-
                                     }
                                 }
                             }

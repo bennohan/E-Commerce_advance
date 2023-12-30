@@ -1,4 +1,4 @@
-package com.bennohan.e_commerce.ui.register
+package com.bennohan.e_commerce.ui.password
 
 import androidx.lifecycle.viewModelScope
 import com.bennohan.e_commerce.api.ApiService
@@ -14,25 +14,24 @@ import org.json.JSONObject
 import javax.inject.Inject
 
 @HiltViewModel
-class RegisterViewModel @Inject constructor(
+class PasswordViewModel @Inject constructor(
     private val apiService: ApiService,
     private val session: CoreSession,
     private val gson: Gson,
     private val userDao: UserDao
 ) :  BaseViewModel() {
 
-    fun register(
-        name: String,
-        phoneOrEmail: String,
-        password: String,
-        confirmPassword: String
+    fun editPassword(
+        newPassword: String,
+        passwordConfirmation : String,
     ) = viewModelScope.launch {
         _apiResponse.emit(ApiResponse().responseLoading())
-        ApiObserver({ apiService.register(name,phoneOrEmail, password,confirmPassword) },
+        ApiObserver({ apiService.editPassword(newPassword, passwordConfirmation) },
             false,
             object : ApiObserver.ResponseListener {
                 override suspend fun onSuccess(response: JSONObject) {
-                    _apiResponse.emit(ApiResponse().responseSuccess())
+                    _apiResponse.emit(ApiResponse().responseSuccess("Password Changed"))
+
                 }
 
                 override suspend fun onError(response: ApiResponse) {
@@ -42,6 +41,5 @@ class RegisterViewModel @Inject constructor(
                 }
             })
     }
-
 
 }

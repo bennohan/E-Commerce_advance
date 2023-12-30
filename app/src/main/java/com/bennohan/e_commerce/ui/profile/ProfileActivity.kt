@@ -2,7 +2,6 @@ package com.bennohan.e_commerce.ui.profile
 
 import android.app.AlertDialog
 import android.content.DialogInterface
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.core.content.ContextCompat
@@ -11,14 +10,15 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.bennohan.e_commerce.R
 import com.bennohan.e_commerce.base.BaseActivity
-import com.bennohan.e_commerce.database.UserDao
+import com.bennohan.e_commerce.database.user.UserDao
 import com.bennohan.e_commerce.databinding.ActivityProfileBinding
+import com.bennohan.e_commerce.ui.history.HistoryActivity
 import com.bennohan.e_commerce.ui.login.LoginActivity
+import com.bennohan.e_commerce.ui.password.PasswordActivity
 import com.bennohan.e_commerce.ui.profileSettings.ProfileSettingsActivity
 import com.crocodic.core.api.ApiStatus
 import com.crocodic.core.extension.openActivity
 import com.crocodic.core.extension.snacked
-import dagger.Provides
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -37,6 +37,18 @@ class ProfileActivity : BaseActivity<ActivityProfileBinding,ProfileViewModel>(R.
 
         binding.btnLogout.setOnClickListener {
             logoutDialog()
+        }
+
+        binding.btnBack.setOnClickListener {
+            finish()
+        }
+
+        binding.btnChangePasswordForward.setOnClickListener {
+            openActivity<PasswordActivity>()
+        }
+
+        binding.btnHistoryFroward.setOnClickListener {
+            openActivity<HistoryActivity>()
         }
 
         binding.btnProfileSettingFroward.setOnClickListener {
@@ -102,7 +114,7 @@ class ProfileActivity : BaseActivity<ActivityProfileBinding,ProfileViewModel>(R.
                                     disconnect(it)
                                     loadingDialog.setResponse(it.message ?: return@collect)
                                 }
-                                else -> binding?.root?.snacked("error")
+                                else -> binding.root.snacked("error")
                             }
 
                         }

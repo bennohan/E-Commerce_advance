@@ -1,6 +1,5 @@
 package com.bennohan.e_commerce.ui.register
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.SpannableString
 import android.text.Spanned

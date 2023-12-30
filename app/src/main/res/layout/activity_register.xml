@@ -30,9 +30,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Create Account"
+                android:text="@string/create_account"
                 android:textColor="@color/black"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -40,7 +40,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:text="Name"
+                android:text="@string/name"
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -78,7 +78,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:text="Email or Phone number"
+                android:text="@string/email_or_phone_number"
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -114,7 +114,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:text="Password"
+                android:text="@string/password"
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -151,7 +151,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:text="Confirm Password"
+                android:text="@string/confirm_password"
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -188,7 +188,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
-                android:text="Password Did Not Match"
+                android:text="@string/password_did_not_match"
                 android:textColor="@color/text_red"
                 android:visibility="gone" />
 
@@ -197,7 +197,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
-                android:text="Password Minimum 6 Character"
+                android:text="@string/password_minimum_6_character"
                 android:textColor="@color/text_red"
                 android:visibility="gone" />
 
@@ -209,7 +209,7 @@
                 android:layout_marginTop="30dp"
                 android:background="@drawable/background_button"
                 android:backgroundTint="@color/buttonColorYellow"
-                android:text="Register"
+                android:text="@string/register"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textStyle="bold"
@@ -224,8 +224,8 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="16dp"
-                android:text="Already have an account ? Log In"
-                android:textSize="15dp"
+                android:text="@string/already_have_an_account_log_in"
+                android:textSize="15sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

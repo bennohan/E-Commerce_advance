@@ -3,6 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="user"
+            type="com.bennohan.e_commerce.database.user.User" />
+    </data>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -16,44 +22,41 @@
             android:background="@color/white"
             android:padding="20dp">
 
-            <ImageButton
-                android:id="@+id/btn_menu"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:background="@null"
-                android:src="@drawable/ic_baseline_menu_main_color"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tv_home"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Home"
+                android:text="@string/home"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/btn_cart"
-                app:layout_constraintStart_toEndOf="@+id/btn_menu"
+                app:layout_constraintHorizontal_bias="0.654"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
+                android:contentDescription="@string/buttoncart"
                 android:id="@+id/btn_cart"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_marginEnd="15dp"
                 android:background="@null"
+                android:foreground="@drawable/ripple_effect"
                 android:src="@drawable/ic_baseline_shopping_cart_main_color"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/iv_profile"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
+                android:contentDescription="@string/buttonprofile"
                 android:id="@+id/iv_profile"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
+                imageUrlCircle='@{user.photo}'
+                android:foreground="@drawable/ripple_effect"
                 android:src="@drawable/ic_baseline_person_24"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -70,25 +73,19 @@
 
             <EditText
                 android:id="@+id/searchView"
-                android:layout_width="300dp"
+                android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:background="@drawable/background_button"
                 android:backgroundTint="#F5F5F5"
                 android:drawableStart="@drawable/ic_baseline_search_24"
+                android:hint="@string/search"
+                android:inputType="text"
                 android:paddingStart="5dp"
-                app:layout_constraintEnd_toStartOf="@+id/btn_menuFilter"
+                android:paddingEnd="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageButton
-                android:id="@+id/btn_menuFilter"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="@drawable/background_button"
-                android:backgroundTint="@color/mainColor_purple"
-                android:src="@drawable/ic_baseline_filter_list_white"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
 
             <com.denzcoskun.imageslider.ImageSlider
                 android:id="@+id/image_slider"
@@ -123,7 +120,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="10dp"
-                        android:text="All"
+                        android:text="@string/all"
                         android:background="@drawable/background_button_filter"
                         android:textAllCaps="false"
                         android:textColor="@color/black"
@@ -134,7 +131,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="10dp"
-                        android:text="Topi"
+                        android:text="@string/topi"
                         android:background="@drawable/background_button_filter"
                         android:textAllCaps="false"
                         android:textColor="@color/black"
@@ -145,7 +142,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="10dp"
-                        android:text="T-Shirt"
+                        android:text="@string/t_shirt"
                         android:background="@drawable/background_button_filter"
                         android:textAllCaps="false"
                         android:textColor="@color/black"
@@ -156,7 +153,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="10dp"
-                        android:text="Sepatu"
+                        android:text="@string/sepatu"
                         android:background="@drawable/background_button_filter"
                         android:textAllCaps="false"
                         android:textColor="@color/black"
@@ -167,7 +164,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="10dp"
-                        android:text="Jaket"
+                        android:text="@string/jaket"
                         android:background="@drawable/background_button_filter"
                         android:textAllCaps="false"
                         android:textColor="@color/black"
@@ -178,7 +175,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="10dp"
-                        android:text="Tas"
+                        android:text="@string/tas"
                         android:background="@drawable/background_button_filter"
                         android:textAllCaps="false"
                         android:textColor="@color/black"
@@ -189,7 +186,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="10dp"
-                        android:text="Hoddie"
+                        android:text="@string/hoddie"
                         android:background="@drawable/background_button_filter"
                         android:textAllCaps="false"
                         android:textColor="@color/black"
@@ -210,27 +207,29 @@
                 app:layout_constraintTop_toBottomOf="@id/scrollHorizontalCategory">
 
                 <TextView
+                    android:id="@+id/tv_category"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Popular"
+                    android:text="@string/popular"
                     android:layout_weight="1"
                     android:layout_marginStart="10dp"
                     android:textColor="@color/black"
                     android:gravity="start"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tv_viewAll"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="View All"
+                    android:text="@string/view_all"
                     android:layout_weight="1"
                     android:gravity="end"
                     android:layout_marginEnd="10dp"
-                    android:textSize="15dp" />
+                    android:textSize="15sp" />
 
             </LinearLayout>
+
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_product"
@@ -245,6 +244,19 @@
                 tools:layout_editor_absoluteX="20dp"
                 tools:listitem="@layout/product_item" />
 
+            <TextView
+                android:id="@+id/tv_productNotFound"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/produk_tidak_ditemukan"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/rv_product" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

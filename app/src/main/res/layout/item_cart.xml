@@ -71,6 +71,7 @@
                         android:src="@drawable/ic_baseline_horizontal_min" />
 
                     <TextView
+                        android:id="@+id/tv_productQty"
                         android:layout_width="40dp"
                         android:layout_height="match_parent"
                         android:gravity="center"
